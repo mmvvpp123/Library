@@ -14,6 +14,30 @@ public class User implements Serializable {
         this.name = name;
     }
 
+    public static byte [] encrypt(byte [] password) {
+        byte [] encrypted = new byte[password.length];
+
+        for (int i = 0; i < encrypted.length; i++) {
+            if(i % 2 == 0) {
+                encrypted[i] = (byte)(password[i]-1);
+            }
+            else encrypted[i] = (byte)(password[i]+1);
+        }
+        return encrypted;
+    }
+
+    public static byte [] decrypt (byte [] encrypted) {
+        byte [] decrypted = new byte[encrypted.length];
+
+        for (int i = 0; i < decrypted.length; i++) {
+            if(i % 2 == 0) {
+                decrypted[i] = (byte)(encrypted[i]+1);
+            }
+            else decrypted[i] = (byte)(encrypted[i]-1);
+        }
+        return decrypted;
+    }
+
     public static void save(User x) {
         try {
             File userFile = new File(x.email + ".bin");
