@@ -7,11 +7,13 @@ public class User implements Serializable {
     private String email;
     private String password;
     private String name;
+    private String type;
 
     User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
+        type = "User";
     }
 
     public static byte [] encrypt(byte [] password) {
@@ -40,7 +42,7 @@ public class User implements Serializable {
 
     public static void save(User x) {
         try {
-            File userFile = new File(x.email + ".bin");
+            File userFile = new File("/Users/sherzodnimatullo/Library-School-Project/users/" + x.email + ".bin");
             //Saving of object in a file
             FileOutputStream file = new FileOutputStream(userFile);
             ObjectOutputStream out = new ObjectOutputStream(file);
@@ -80,5 +82,9 @@ public class User implements Serializable {
     }
     public String getPassword() {
         return password;
+    }
+
+    public String getType () {
+        return type;
     }
 }
