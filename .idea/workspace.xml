@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb09f599-3555-413a-bc49-5f6b56033097" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/Library/AdminClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/Library/javafxSide.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/MyLibrary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/src/javafxSide.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/Login.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/out/production/Login/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/out/production/Login/jfxside.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Login/src/jfxside.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/AdminClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/AdminClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/Book.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,17 +38,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="-78">
+              <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
               <folding>
-                <element signature="e#359#360#0" expanded="true" />
-                <element signature="e#387#388#0" expanded="true" />
-                <element signature="e#420#421#0" expanded="true" />
-                <element signature="e#449#450#0" expanded="true" />
-                <element signature="e#484#485#0" expanded="true" />
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#546#547#0" expanded="true" />
-                <element signature="e#573#574#0" expanded="true" />
+                <element signature="e#378#379#0" expanded="true" />
+                <element signature="e#406#407#0" expanded="true" />
+                <element signature="e#439#440#0" expanded="true" />
+                <element signature="e#468#469#0" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+                <element signature="e#565#566#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -68,7 +58,7 @@
         <entry file="file://$PROJECT_DIR$/Library/src/Library/javafxSide.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +69,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="57" column="148" selection-start-line="57" selection-start-column="148" selection-end-line="57" selection-end-column="148" />
+            <state relative-caret-position="358">
+              <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -91,14 +81,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+            <state relative-caret-position="57">
+              <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#474#475#0" expanded="true" />
-                <element signature="e#500#501#0" expanded="true" />
-                <element signature="e#849#850#0" expanded="true" />
-                <element signature="e#883#884#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,8 +93,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
+            <state relative-caret-position="412">
+              <caret line="90" column="5" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="90" selection-end-column="5" />
+              <folding>
+                <element signature="e#336#342#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -146,6 +135,7 @@
         <option value="$PROJECT_DIR$/Library/src/Login/jfxside.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/javafxSide.java" />
+        <option value="$PROJECT_DIR$/Library/src/Library/Book.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/AdminClass.java" />
       </list>
     </option>
@@ -160,6 +150,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -196,8 +188,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1555424867008</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Started Admin class and library">
+      <created>1555472191155</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1555472191155</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -305,13 +302,13 @@
     <frame x="0" y="23" width="1440" height="828" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Capture Tool" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25679544" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32880434" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32880434" />
@@ -321,12 +318,10 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.329927" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.32880434" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50080776" side_tool="true" weight="0.329927" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49919224" weight="0.329927" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32880434" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -334,13 +329,16 @@
       <window_info anchor="right" id="Database" order="4" weight="0.32956383" />
       <window_info anchor="right" id="Maven" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
     </layout>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="initial commit&#10;-working log in and sign up screens&#10;-need to encrypt passwords" />
     <MESSAGE value="Includes:&#10;-Encryption&#10;-Decryption&#10;-Password requirements" />
-    <option name="LAST_COMMIT_MESSAGE" value="Includes:&#10;-Encryption&#10;-Decryption&#10;-Password requirements" />
+    <MESSAGE value="Started Admin class and library" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started Admin class and library" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -358,93 +356,70 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Login/src/jfxside.java">
+    <entry file="file://$PROJECT_DIR$/Login/src/jfxside.java" />
+    <entry file="file://$PROJECT_DIR$/Login/src/User.java" />
+    <entry file="file://$PROJECT_DIR$/Library/src/User.java" />
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/jfxside.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="60" column="37" selection-start-line="60" selection-start-column="37" selection-end-line="60" selection-end-column="37" />
+        <state relative-caret-position="57">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Login/src/User.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1380">
-          <caret line="94" column="31" selection-start-line="94" selection-start-column="31" selection-end-line="94" selection-end-column="31" />
+        <state relative-caret-position="412">
+          <caret line="90" column="5" lean-forward="true" selection-start-line="70" selection-start-column="4" selection-end-line="90" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#320#326#0" expanded="true" />
-            <element signature="e#553#554#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
-            <element signature="e#2753#2754#0" expanded="true" />
-            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#336#342#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/User.java">
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/com/sun/javafx/event/EventDispatchChainImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="127">
+          <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Library/Book.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="-78">
+          <caret line="4" column="41" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="41" />
           <folding>
-            <element signature="e#359#360#0" expanded="true" />
-            <element signature="e#387#388#0" expanded="true" />
-            <element signature="e#420#421#0" expanded="true" />
-            <element signature="e#449#450#0" expanded="true" />
-            <element signature="e#484#485#0" expanded="true" />
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+            <element signature="e#406#407#0" expanded="true" />
+            <element signature="e#439#440#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Login/jfxside.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="14" column="43" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Library/javafxSide.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="38" column="10" selection-start-line="38" selection-start-column="10" selection-end-line="38" selection-end-column="10" />
+          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#474#475#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#849#850#0" expanded="true" />
-            <element signature="e#883#884#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="57" column="148" selection-start-line="57" selection-start-column="148" selection-end-line="57" selection-end-column="148" />
+        <state relative-caret-position="358">
+          <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
