@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class AdminWindow extends Application implements Serializable {
     private TableView table = generateColumns();
     private ObservableList<Book> books = FXCollections.observableArrayList();
-    private MyLibrary library = new MyLibrary(new ArrayList<>());
+    private MyLibrary library = new MyLibrary(load());
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -47,30 +47,61 @@ public class AdminWindow extends Application implements Serializable {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Resource File");
             File f = fileChooser.showOpenDialog(primaryStage);
-            ObservableList<Book> temp = load(f);
+            ArrayList<Book> temp = load(f);
             for (int i = 0; i < temp.size(); i++) {
                 books.add(temp.get(i));
             }
             temp = null;
         });
 
-        save.setOnAction(e -> save(books));
+        save.setOnAction(e -> save(library.getList()));
+
+
         remove.setOnAction(e -> {
-            remove ((Book)table.getSelectionModel().getSelectedItem());
+            Book k = (Book)table.getSelectionModel().getSelectedItem();
+
+            if (k.getQuantity() == 1) {
+                books.remove(k);
+                library.remove(k);
+            }
+            else
+                for (int i = 0; i < books.size(); i++) {
+                    if (books.get(i).getTitle().equals(k.getTitle())) {
+                        books.get(i).decQuantity();
+                        library.getList().get(i).decQuantity();
+                        table.refresh();
+                        return;
+                    }
+                }
         });
 
         add.setOnAction(e -> {
             Book temp = new Book(title_Field.getText(), author_Field.getText(), category_Field.getText(), isbn_Field.getText());
+
+
+
+
             if(books.size() > 0) {
                 for (int i = 0; i < books.size(); i++) {
-                    if (books.get(i).getTitle().equals(temp.getTitle())) {
-                        temp = books.get(i);
-                        books.remove(books.get(i));
+                    if (library.getList().get(i).getTitle().equals(temp.getTitle())) {
+                        library.getList().get(i).incQuantity();
+                        books.get(i).incQuantity();
+                        table.refresh();
+
+
+                        title_Field.setText("");
+                        author_Field.setText("");
+                        category_Field.setText("");
+                        isbn_Field.setText("");
+                        return;
                     }
                 }
             }
             books.add(temp);
             library.add(temp);
+            table.refresh();
+
+
             title_Field.setText("");
             author_Field.setText("");
             category_Field.setText("");
@@ -121,20 +152,17 @@ public class AdminWindow extends Application implements Serializable {
 
     }
 
-    public void save(ObservableList<Book> books) {
+    public void save(ArrayList<Book> library) {
         try {
             File userFile = new File("listOfBooks.bin");
-            ArrayList<Book> listOfBooks = new ArrayList<>();
+
             //Saving of object in a file
             FileOutputStream file = new FileOutputStream(userFile);
             ObjectOutputStream out = new ObjectOutputStream(file);
 
             // Method for serialization of object
 
-            for (int i = 0; i < books.size(); i++) {
-                listOfBooks.add(books.get(i));
-            }
-            out.writeObject(listOfBooks);
+            out.writeObject(library);
 
             out.close();
             file.close();
@@ -147,8 +175,7 @@ public class AdminWindow extends Application implements Serializable {
         }
     }
 
-    public ObservableList<Book> load(File f) {
-        ObservableList<Book> books = FXCollections.observableArrayList();
+    public ArrayList<Book> load(File f) {
         try {
             // Reading the object from a file
             FileInputStream file = new FileInputStream(f);
@@ -157,22 +184,17 @@ public class AdminWindow extends Application implements Serializable {
             // Method for deserialization of object
             ArrayList<Book> listOfBooks =  (ArrayList) in.readObject();
 
-            for (int i = 0; i < listOfBooks.size(); i++) {
-                books.add(listOfBooks.get(i));
-            }
-
             in.close();
             file.close();
 
-            return books;
+            return listOfBooks;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public ObservableList<Book> load() {
-        ObservableList<Book> books = FXCollections.observableArrayList();
+    public ArrayList<Book> load() {
         try {
             // Reading the object from a file
             FileInputStream file = new FileInputStream(new File("/Users/sherzodnimatullo/Library-School-Project/listOfBooks.bin"));
@@ -181,30 +203,14 @@ public class AdminWindow extends Application implements Serializable {
             // Method for deserialization of object
             ArrayList<Book> listOfBooks =  (ArrayList) in.readObject();
 
-            for (int i = 0; i < listOfBooks.size(); i++) {
-                books.add(listOfBooks.get(i));
-            }
-
             in.close();
             file.close();
 
-            return books;
+            System.out.println("Books Loaded");
+            return listOfBooks;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public void remove(Book k) {
-        for (int i = 0; i < books.size(); i++) {
-            if (books.get(i).getTitle().equals(k.getTitle())) {
-                books.get(i).decQuantity();
-            }
-            else {
-                books.remove(k);
-                library.remove(k);
-                break;
-            }
-        }
     }
 }
