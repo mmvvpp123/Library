@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -14,9 +15,10 @@ import javafx.stage.Stage;
 import java.io.*;
 import java.util.ArrayList;
 
-public class AdminClass extends Application implements Serializable {
-    private TableView table = new TableView();
+public class AdminWindow extends Application implements Serializable {
+    private TableView table = generateColumns();
     private ObservableList<Book> books = FXCollections.observableArrayList();
+    private MyLibrary library = new MyLibrary(new ArrayList<>());
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -40,59 +42,83 @@ public class AdminClass extends Application implements Serializable {
         Button add = new Button("Add Book");
         Button save = new Button("Save");
         Button load = new Button("Load");
+        Button remove = new Button("Remove Book");
         load.setOnAction(e -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Open Resource File");
             File f = fileChooser.showOpenDialog(primaryStage);
-            books = load(f);
-            table.setItems(books);
-
+            ObservableList<Book> temp = load(f);
+            for (int i = 0; i < temp.size(); i++) {
+                books.add(temp.get(i));
+            }
+            temp = null;
         });
 
         save.setOnAction(e -> save(books));
+        remove.setOnAction(e -> {
+            remove ((Book)table.getSelectionModel().getSelectedItem());
+        });
 
         add.setOnAction(e -> {
             Book temp = new Book(title_Field.getText(), author_Field.getText(), category_Field.getText(), isbn_Field.getText());
+            if(books.size() > 0) {
+                for (int i = 0; i < books.size(); i++) {
+                    if (books.get(i).getTitle().equals(temp.getTitle())) {
+                        temp = books.get(i);
+                        books.remove(books.get(i));
+                    }
+                }
+            }
             books.add(temp);
+            library.add(temp);
             title_Field.setText("");
             author_Field.setText("");
             category_Field.setText("");
             isbn_Field.setText("");
         });
 
-        TableColumn<Book, String> titleColumn = new TableColumn("Title");
-        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
-        titleColumn.setMinWidth(300);
+
+        table.setItems(books);
 
 
-        TableColumn <Book, String> authorColumn = new TableColumn("Author");
-        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-
-
-        TableColumn <Book, String> categoryColumn = new TableColumn("Category");
-        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-
-        TableColumn <Book, String> isbnColumn = new TableColumn("ISBN");
-        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-        isbnColumn.setMinWidth(200);
-
-
-        table.getColumns().addAll(titleColumn, authorColumn, categoryColumn, isbnColumn);
-        table.setItems(getBooks());
-
-
-        VBox vbox = new VBox(20, table, title_Label, title_Field, author_Label, author_Field, category_Label, category_Field, isbn_Label, isbn_Field, add, save, load);
+        HBox hbox = new HBox(20, add, remove, save, load);
+        VBox vbox = new VBox(20, table, title_Label, title_Field, author_Label, author_Field, category_Label, category_Field, isbn_Label, isbn_Field, hbox);
         vbox.setPadding(new Insets(10));
 
-        Scene scene = new Scene(vbox, 1280,720);
+        Scene scene = new Scene(vbox, 900,680);
 
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-    public ObservableList<Book> getBooks() {
-        books.add(new Book("YES", "IWROTETHIS", "MYSTERY", "123"));
-        return books;
+    public TableView generateColumns() {
+        TableColumn<Book, String> titleColumn = new TableColumn("Title");
+        titleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleColumn.setMinWidth(320);
+
+
+        TableColumn <Book, String> authorColumn = new TableColumn("Author");
+        authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        authorColumn.setMinWidth(200);
+
+
+        TableColumn <Book, String> categoryColumn = new TableColumn("Category");
+        categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        categoryColumn.setMinWidth(200);
+
+        TableColumn <Book, String> isbnColumn = new TableColumn("ISBN");
+        isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        isbnColumn.setMinWidth(300);
+
+        TableColumn <Book, Integer> quantityColumn = new TableColumn("Quantity");
+        quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+        quantityColumn.setMinWidth(100);
+
+        TableView table = new TableView();
+        table.getColumns().addAll(titleColumn, authorColumn, categoryColumn, isbnColumn, quantityColumn);
+
+        return table;
+
     }
 
     public void save(ObservableList<Book> books) {
@@ -143,5 +169,42 @@ public class AdminClass extends Application implements Serializable {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ObservableList<Book> load() {
+        ObservableList<Book> books = FXCollections.observableArrayList();
+        try {
+            // Reading the object from a file
+            FileInputStream file = new FileInputStream(new File("/Users/sherzodnimatullo/Library-School-Project/listOfBooks.bin"));
+            ObjectInputStream in = new ObjectInputStream(file);
+
+            // Method for deserialization of object
+            ArrayList<Book> listOfBooks =  (ArrayList) in.readObject();
+
+            for (int i = 0; i < listOfBooks.size(); i++) {
+                books.add(listOfBooks.get(i));
+            }
+
+            in.close();
+            file.close();
+
+            return books;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void remove(Book k) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getTitle().equals(k.getTitle())) {
+                books.get(i).decQuantity();
+            }
+            else {
+                books.remove(k);
+                library.remove(k);
+                break;
+            }
+        }
     }
 }
