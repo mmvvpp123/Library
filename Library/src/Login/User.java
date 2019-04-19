@@ -23,8 +23,17 @@ public class User implements Serializable {
         type = "User";
     }
 
-    public void addBorrowedBooks(Book k) {
-        borrowedBooks.add(k);
+    public void add(Book k) {
+        borrowedBooks.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+    }
+
+    public void remove(Book k) {
+        for (Book x : borrowedBooks) {
+            if (x.getTitle().equals(k.getTitle())) {
+                borrowedBooks.remove(x);
+                return;
+            }
+        }
     }
 
     public static byte[] encrypt(byte[] password) {
@@ -100,7 +109,7 @@ public class User implements Serializable {
 
     public String getName() { return name; }
 
-    public ArrayList<Book> getBorrowedBooks() {
+    public ArrayList<Book> getList() {
         if (!(borrowedBooks.size() > 1)) {
             System.out.println("True");
             return new ArrayList<Book>();

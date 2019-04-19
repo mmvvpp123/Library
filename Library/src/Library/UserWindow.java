@@ -1,17 +1,25 @@
 package Library;
 
+import Login.LogInScreen;
 import Login.User;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.util.ArrayList;
 
 public class UserWindow extends Application implements Serializable {
+
+    private Stage currentStage;
 
     private User user;
 
@@ -31,7 +39,8 @@ public class UserWindow extends Application implements Serializable {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("User Window");
+        currentStage = primaryStage;
+        currentStage.setTitle("User Window");
         borrowedBooks = loadData();
 
         for (Book k : admin.load())
@@ -40,86 +49,126 @@ public class UserWindow extends Application implements Serializable {
         Button borrow = new Button("Borrow");
         borrow.setOnAction(e -> {
             Book selectedBook = (Book)availableBooksTable.getSelectionModel().getSelectedItem();
-            int indexOf = indexOfBook(borrowedBooks, selectedBook);
-
-
-            if (selectedBook.getQuantity() == 1) {
-                availableBooksList.remove(selectedBook);
-                library.remove(selectedBook);
-
-                if (indexOf > -1) {
-                    borrowedBooks.get(indexOf).incQuantity();
-                    myBooksTable.refresh();
-                    availableBooksTable.refresh();
-                }
-                else borrowedBooks.add(selectedBook);
-
-            }
-            else
-                for (int i = 0; i < availableBooksList.size(); i++) {
-                    if (availableBooksList.get(i).getTitle().equals(selectedBook.getTitle())) {
-                        availableBooksList.get(i).decQuantity();
-                        library.getList().get(i).decQuantity();
-                        availableBooksTable.refresh();
-
-                        for (int j = 0; j < borrowedBooks.size(); j++) {
-                            if (borrowedBooks.get(j).getTitle().equals(selectedBook.getTitle())) {
-                                borrowedBooks.get(j).incQuantity();
-                                myBooksTable.refresh();
-                                return;
-                            }
-                        }
-                        borrowedBooks.add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(), selectedBook.getCategory(), selectedBook.getIsbn()));
-                        return;
-                    }
-                }
+            moveBook(availableBooksList, borrowedBooks, user, library, selectedBook);
+            save(user, library.getList());
         });
 
         Button returnBook = new Button("Return");
         returnBook.setOnAction(event -> {
             Book selectedBook = (Book)myBooksTable.getSelectionModel().getSelectedItem();
-
-            if (selectedBook.getQuantity() == 1) {
-                borrowedBooks.remove(selectedBook);
-                library.add(selectedBook);
-
-                availableBooksList.add(selectedBook);
-            }
-            else
-                for (int i = 0; i < borrowedBooks.size(); i++) {
-                    if (borrowedBooks.get(i).getTitle().equals(selectedBook.getTitle())) {
-                        borrowedBooks.get(i).decQuantity();
-                        library.getList().get(i).incQuantity();
-                        myBooksTable.refresh();
-
-                        for (int j = 0; j < availableBooksList.size(); j++) {
-                            if (availableBooksList.get(j).getTitle().equals(selectedBook.getTitle())) {
-                                availableBooksList.get(j).incQuantity();
-                            }
-                        }
-                        return;
-                    }
-                }
+            moveBook(borrowedBooks, availableBooksList, library, user, selectedBook);
+            save(user, library.getList());
         });
+
         TabPane tabPane = new TabPane();
         Tab myBooks = new Tab("My Books");
 
-        VBox myBooksBox = new VBox(myBooksTable, returnBook);
+        VBox myBooksBox = new VBox(20, myBooksTable, returnBook);
+        myBooksBox.setPadding(new Insets(5));
         myBooks.setContent(myBooksBox);
 
         Tab availableBooks = new Tab("Available Books");
         availableBooksTable.setItems(availableBooksList);
-        VBox availableBox = new VBox(availableBooksTable, borrow);
+
+        VBox availableBox = new VBox(20, availableBooksTable, borrow);
+        availableBox.setPadding(new Insets(5));
         availableBooks.setContent(availableBox);
 
         tabPane.getTabs().addAll(availableBooks, myBooks);
 
         Label name = new Label("Hello, " + user.getName());
-        VBox vbox = new VBox(20, name, tabPane, borrow);
+        Button logoff = new Button("Log Out");
 
-        Scene scene = new Scene(vbox, 900, 600);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        GridPane nameandlogout = new GridPane();
+        nameandlogout.add(name, 0, 0);
+        nameandlogout.add(logoff, 2, 0);
+        nameandlogout.setHgap(511);
+        nameandlogout.setPadding(new Insets(5));
+
+        logoff.setOnAction(event -> restart(LogInScreen.scene));
+        VBox vbox = new VBox(20, nameandlogout, tabPane);
+
+        Scene scene = new Scene(vbox, 1260, 500);
+        currentStage.setScene(scene);
+        currentStage.show();
+    }
+
+    void restart (Scene scene) {
+        try {
+            currentStage.close();
+            LogInScreen login = new LogInScreen();
+            login.start(login.currentStage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void refresh() {
+        availableBooksTable.refresh();
+        myBooksTable.refresh();
+    }
+
+    private void save(User c, ArrayList<Book> k) {
+        User.save(c);
+        AdminWindow.save(k);
+    }
+
+    private void moveBook(ObservableList<Book> fromList, ObservableList<Book> toList, Object to, Object from, Book selectedBook) {
+        int indexOf = indexOfBook(toList, selectedBook);
+
+        if (selectedBook.getQuantity() == 1) {
+            fromList.remove(selectedBook);
+            if (from instanceof User)
+                ((User)from).remove(selectedBook);
+            else
+                ((MyLibrary)from).remove(selectedBook);
+
+            if(indexOf > -1) {
+                toList.get(indexOf).incQuantity();
+                refresh();
+            }
+            else {
+                toList.add(selectedBook);
+                if(to instanceof User)
+                    ((User)to).add(selectedBook);
+                else
+                    ((MyLibrary)to).add(selectedBook);
+            }
+        }
+        else {
+            for (int i = 0; i < fromList.size(); i++) {
+                if (fromList.get(i).getTitle().equals(selectedBook.getTitle())) {
+                    fromList.get(i).decQuantity();
+                    if (from instanceof User)
+                        ((User)from).getList().get(i).decQuantity();
+                    else
+                        ((MyLibrary)from).getList().get(i).decQuantity();
+                    refresh();
+
+                    for (int j = 0; j < toList.size(); j++) {
+                        if (toList.get(j).getTitle().equals(selectedBook.getTitle())) {
+                            toList.get(j).incQuantity();
+                            if (to instanceof User)
+                                ((User)to).getList().get(j).incQuantity();
+                            else
+                                ((MyLibrary)to).getList().get(j).incQuantity();
+
+                            refresh();
+                            return;
+                        }
+                    }
+                    toList.add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
+                                        selectedBook.getCategory(), selectedBook.getIsbn()));
+                    if (to instanceof User)
+                        ((User)to).add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
+                            selectedBook.getCategory(), selectedBook.getIsbn()));
+                    else
+                        ((MyLibrary)to).add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
+                                selectedBook.getCategory(), selectedBook.getIsbn()));
+                    return;
+                }
+            }
+        }
     }
 
     private int indexOfBook(ObservableList<Book> books, Book k) {
@@ -131,8 +180,8 @@ public class UserWindow extends Application implements Serializable {
     }
 
     private ObservableList<Book> loadData() {
-        if(user.getBorrowedBooks() != null) {
-            ObservableList<Book> temp = FXCollections.observableArrayList(user.getBorrowedBooks());
+        if(user.getList() != null) {
+            ObservableList<Book> temp = FXCollections.observableArrayList(user.getList());
             myBooksTable.setItems(temp);
             return temp;
         }

@@ -15,13 +15,14 @@ public class MyLibrary {
 
     public void add(Book k) {
         Book temp = new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn());
-            listOfBooks.add(temp);
+        listOfBooks.add(temp);
         }
 
     public void remove(Book k) {
         for (Book inList:listOfBooks) {
             if (k.getTitle().equals(inList.getTitle())) {
                 listOfBooks.remove(inList);
+                AdminWindow.save(listOfBooks);
                 return;
             }
         }

@@ -7,9 +7,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -19,6 +22,7 @@ public class LogInScreen extends Application {
     public static Scene scene;
     public static PasswordField password_Field;
     public static final ToggleGroup privilege = new ToggleGroup();
+    
 
     public static void main(String[] args) {
         launch(args);
@@ -26,6 +30,9 @@ public class LogInScreen extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         currentStage = primaryStage;
+
+        Text welcome = new Text("Sherzod's Local Library");
+        welcome.setId("welcometext");
 
         Label email_Label = new Label("Email");
         TextField email_Field = new TextField();
@@ -56,8 +63,23 @@ public class LogInScreen extends Application {
             email_Label.setText("Email");
         });
 
-        HBox horiBox = new HBox(user, guest, admin);
+        GridPane gPane = new GridPane();
+        gPane.setAlignment(Pos.CENTER);
+        gPane.setHgap(10);
+        gPane.setVgap(10);
+        gPane.setPadding(new Insets(25));
+
+        gPane.add(welcome, 0, 0, 2, 1);
+        gPane.add(email_Label, 0, 1, 1, 1);
+        gPane.add(email_Field, 1, 1, 1, 1);
+        gPane.add(password_Label, 0, 2);
+        gPane.add(password_Field, 1, 2);
+
+        HBox horiBox = new HBox(20, user, guest, admin);
+
+        gPane.add(horiBox, 1, 3);
         Button logIn = new Button("Log In");
+
         logIn.setOnAction((event) -> {
             if(!guest.isSelected()) {
                 File loadFile = new File("/Users/sherzodnimatullo/Library-School-Project/users/" + email_Field.getText() + ".bin");
@@ -94,13 +116,18 @@ public class LogInScreen extends Application {
         });
 
         Button signUp = new Button("Sign Up");
+        HBox buttons = new HBox(20, logIn, signUp);
+        gPane.add(buttons, 1, 4);
         signUp.setOnAction(e -> password_Field.setText(""));
         signUp.setOnAction(e -> signUp(email_Field.getText()));
 
-        VBox vertBox = new VBox(10, email_Label, email_Field, password_Label, password_Field, horiBox, logIn, signUp);
-        vertBox.setAlignment(Pos.CENTER);
-        vertBox.setPadding(new Insets(20));
-        scene = new Scene(vertBox,300, 500);
+//        VBox vertBox = new VBox(10, email_Label, email_Field, password_Label, password_Field, horiBox, logIn, signUp);
+//        vertBox.setAlignment(Pos.CENTER);
+//        vertBox.setPadding(new Insets(20));
+        scene = new Scene(gPane,1280, 720);
+        File f = new File("stylesheet.css");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add("file:///" + f.getAbsolutePath().replace("\\", "/"));
         primaryStage.setScene(scene);
         primaryStage.show();
     }

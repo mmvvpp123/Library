@@ -152,7 +152,7 @@ public class AdminWindow extends Application implements Serializable {
 
     }
 
-    public void save(ArrayList<Book> library) {
+    public static void save(ArrayList<Book> library) {
         try {
             File userFile = new File("listOfBooks.bin");
 
@@ -166,10 +166,6 @@ public class AdminWindow extends Application implements Serializable {
 
             out.close();
             file.close();
-
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("Saved");
-            alert.show();
         } catch (Exception e) {
             e.printStackTrace();
         }

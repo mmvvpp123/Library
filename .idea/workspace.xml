@@ -6,13 +6,16 @@
       <change beforePath="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/Library/UserWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/UserWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Login/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Login/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/AdminWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/AdminWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/MyLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/MyLibrary.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/UserWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/UserWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/listOfBooks.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/a.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/amanda@gmail.com.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/binli@gmail.com.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Login/LogInScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Login/LogInScreen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Login/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Login/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listOfBooks.bin" beforeDir="false" afterPath="$PROJECT_DIR$/listOfBooks.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/josh8@gmail.com.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/shermanjones99@gmail.com.bin" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/users/sherzodnimatullo@gmail.com.bin" beforeDir="false" afterPath="$PROJECT_DIR$/users/sherzodnimatullo@gmail.com.bin" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,68 +50,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="405">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
               <folding>
-                <element signature="e#130#131#0" expanded="true" />
-                <element signature="e#182#183#0" expanded="true" />
-                <element signature="e#586#587#0" expanded="true" />
-                <element signature="e#638#639#0" expanded="true" />
-                <element signature="e#885#886#0" expanded="true" />
-                <element signature="e#924#925#0" expanded="true" />
+                <element signature="e#786#787#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/UserWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+            <state relative-caret-position="1005">
+              <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="198" selection-start-line="198" selection-end-line="198" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Scene.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="2494" selection-start-line="2494" selection-end-line="2494" />
-              <folding>
-                <element signature="e#66572#66573#0" expanded="true" />
-                <element signature="e#66618#66619#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="8411" selection-start-line="8411" selection-end-line="8411" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/Button.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="186" selection-start-line="186" selection-end-line="186" />
             </state>
           </provider>
         </entry>
@@ -116,8 +74,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="74" column="17" lean-forward="true" selection-start-line="60" selection-start-column="12" selection-end-line="74" selection-end-column="17" />
+            <state relative-caret-position="2370">
+              <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,10 +84,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#600#601#0" expanded="true" />
+                <element signature="e#702#703#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Library/src/Login/LogInScreen.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-429">
-              <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
+            <state relative-caret-position="155">
+              <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,6 +115,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="JavaFXApplication" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -150,9 +127,12 @@
       <find>loadData</find>
       <find>content</find>
       <find>remove</find>
-      <find>save</find>
       <find>ArrayList</find>
       <find>:</find>
+      <find>save</find>
+      <find>User</find>
+      <find>returnBook</find>
+      <find>log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -170,16 +150,19 @@
         <option value="$PROJECT_DIR$/Library/src/Login/jfxside.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/AdminClass.java" />
         <option value="$PROJECT_DIR$/Library/src/Login/AdminWindow.java" />
-        <option value="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" />
-        <option value="$PROJECT_DIR$/Library/src/Login/User.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/Book.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" />
+        <option value="$PROJECT_DIR$/Library/src/Login/User.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/UserWindow.java" />
+        <option value="$PROJECT_DIR$/Library/src/Login/login.fxml" />
+        <option value="$PROJECT_DIR$/stylesheet.css" />
+        <option value="$PROJECT_DIR$/Library/src/Login/grafix.fxml" />
+        <option value="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="344" />
     <option name="y" value="1103" />
     <option name="width" value="1280" />
@@ -191,6 +174,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -232,7 +216,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -241,18 +224,24 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Library/src/Login" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/fonts" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.22125" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Library" />
+      <recent name="$PROJECT_DIR$/Library/src/Login" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/fonts" />
       <recent name="$PROJECT_DIR$/Library/src/Login" />
     </key>
   </component>
@@ -324,10 +313,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.AdminWindow" />
-      <item itemvalue="Application.javafxSide" />
-      <item itemvalue="Application.jfxside" />
       <item itemvalue="Application.LogInScreen" />
       <item itemvalue="Application.UserWindow" />
+      <item itemvalue="Application.javafxSide" />
+      <item itemvalue="Application.jfxside" />
     </list>
     <recent_temporary>
       <list>
@@ -354,7 +343,11 @@
       <workItem from="1555515189289" duration="2587000" />
       <workItem from="1555530941538" duration="9467000" />
       <workItem from="1555585661991" duration="5836000" />
-      <workItem from="1555601383327" duration="18962000" />
+      <workItem from="1555601383327" duration="19924000" />
+      <workItem from="1555638227950" duration="8000" />
+      <workItem from="1555673446009" duration="14999000" />
+      <workItem from="1555692789195" duration="2196000" />
+      <workItem from="1555695094438" duration="1050000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;-working log in and sign up screens&#10;-need to encrypt passwords">
       <created>1555363995171</created>
@@ -381,12 +374,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52835000" />
+    <option name="totallyTimeSpent" value="72050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="344" y="1103" width="1280" height="777" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27625203" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29321486" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -482,16 +476,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Library/javafxSide.java" />
-    <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="26" column="29" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TableView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="127">
@@ -513,38 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Login/LogInScreen.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-429">
-          <caret line="9" column="32" lean-forward="true" selection-start-line="9" selection-start-column="32" selection-end-line="9" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-          <folding>
-            <element signature="e#130#131#0" expanded="true" />
-            <element signature="e#182#183#0" expanded="true" />
-            <element signature="e#586#587#0" expanded="true" />
-            <element signature="e#638#639#0" expanded="true" />
-            <element signature="e#885#886#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="74" column="17" lean-forward="true" selection-start-line="60" selection-start-column="12" selection-end-line="74" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Node.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -559,13 +511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="198" selection-start-line="198" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/scene/Scene.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -577,10 +522,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="197" selection-start-line="197" selection-end-line="197" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/TESTING.java" />
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/login.fxml" />
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <element signature="e#786#787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Library/UserWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="57" column="16" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        <state relative-caret-position="1005">
+          <caret line="84" column="33" selection-start-line="84" selection-start-column="33" selection-end-line="84" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2370">
+          <caret line="171" column="5" selection-start-line="171" selection-start-column="5" selection-end-line="171" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stylesheet.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="37" selection-start-line="2" selection-start-column="37" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="111" column="38" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#600#601#0" expanded="true" />
+            <element signature="e#702#703#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/grafix.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Login/LogInScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="4" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
