@@ -9,9 +9,8 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -33,20 +32,29 @@ public class UserWindow extends Application implements Serializable {
     private TableView myBooksTable = admin.generateColumns();
     private ObservableList<Book> borrowedBooks;
 
-    public UserWindow(User user) {
+    private ImageView logOffImg, borrowImg, returnImg;
+
+    public UserWindow(User user) throws IOException, ClassNotFoundException {
         this.user = user;
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         currentStage = primaryStage;
-        currentStage.setTitle("User Window");
+        currentStage.setTitle(user.getName()+"'s Window");
         borrowedBooks = loadData();
 
         for (Book k : admin.load())
             availableBooksList.add(k);
 
         Button borrow = new Button("Borrow");
+        borrow.setDefaultButton(true);
+        borrowImg = new ImageView(new File("/Users/sherzodnimatullo/Library-School-Project/vectors/borrow.png").toURI().toString());
+        borrowImg.setPreserveRatio(true);
+        borrowImg.setFitWidth(25);
+        borrow.setGraphic(borrowImg);
+
+        borrow.setDefaultButton(true);
         borrow.setOnAction(e -> {
             Book selectedBook = (Book)availableBooksTable.getSelectionModel().getSelectedItem();
             moveBook(availableBooksList, borrowedBooks, user, library, selectedBook);
@@ -54,6 +62,11 @@ public class UserWindow extends Application implements Serializable {
         });
 
         Button returnBook = new Button("Return");
+        returnImg = new ImageView(new File("/Users/sherzodnimatullo/Library-School-Project/vectors/return.png").toURI().toString());
+        returnImg.setPreserveRatio(true);
+        returnImg.setFitWidth(25);
+        returnBook.setGraphic(returnImg);
+
         returnBook.setOnAction(event -> {
             Book selectedBook = (Book)myBooksTable.getSelectionModel().getSelectedItem();
             moveBook(borrowedBooks, availableBooksList, library, user, selectedBook);
@@ -78,17 +91,20 @@ public class UserWindow extends Application implements Serializable {
 
         Label name = new Label("Hello, " + user.getName());
         Button logoff = new Button("Log Out");
+        logOffImg = new ImageView(new File("/Users/sherzodnimatullo/Library-School-Project/vectors/logout.png").toURI().toString());
+        logOffImg.setPreserveRatio(true);
+        logOffImg.setFitWidth(15);
+        logoff.setGraphic(logOffImg);
+        Region region = new Region();
 
-        GridPane nameandlogout = new GridPane();
-        nameandlogout.add(name, 0, 0);
-        nameandlogout.add(logoff, 2, 0);
-        nameandlogout.setHgap(511);
-        nameandlogout.setPadding(new Insets(5));
+        HBox logOffandName = new HBox( name, region, logoff);
+        logOffandName.setPadding(new Insets(20));
+        HBox.setHgrow(region, Priority.ALWAYS);
 
         logoff.setOnAction(event -> restart(LogInScreen.scene));
-        VBox vbox = new VBox(20, nameandlogout, tabPane);
+        VBox vbox = new VBox(20, logOffandName, tabPane);
 
-        Scene scene = new Scene(vbox, 1260, 500);
+        Scene scene = new Scene(vbox, 1000, 500);
         currentStage.setScene(scene);
         currentStage.show();
     }
