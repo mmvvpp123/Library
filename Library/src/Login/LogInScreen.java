@@ -125,7 +125,7 @@ public class LogInScreen extends Application {
                     }
                 }
             }
-            if(admin.isSelected() && email_Field.getText().equals("sherzodnimatullo@gmail.com")) {
+            if(admin.isSelected() && email_Field.getText().equals("admin")) {
                 try {
                     AdminWindow adminWindow = new AdminWindow();
                     adminWindow.start(primaryStage);
@@ -188,6 +188,12 @@ public class LogInScreen extends Application {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             if(!passwordConfirm_Field.getText().equals(password_SignUpField.getText())) {
                 alert.setContentText("Password fields don't match");
+                alert.show();
+                password_SignUpField.setText("");
+                passwordConfirm_Field.setText("");
+            }
+            else if(!email_Field.getText().contains("@") && !email_Field.getText().contains(".")) {
+                alert.setContentText("Please enter a valid e-mail address");
                 alert.show();
                 password_SignUpField.setText("");
                 passwordConfirm_Field.setText("");
