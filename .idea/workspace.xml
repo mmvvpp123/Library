@@ -7,17 +7,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb09f599-3555-413a-bc49-5f6b56033097" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Library_School_Project_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Library/UserWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Library/UserWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/src/Login/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Library/src/Login/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/artifacts/Library_School_Project_jar/Library-School-Project.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/artifacts/Library_School_Project_jar/Library-School-Project.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/AdminWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/AdminWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/Book.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/MyLibrary.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/MyLibrary.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Library/UserWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Library/UserWindow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Login/LogInScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Login/LogInScreen.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/listOfBooks.bin" beforeDir="false" afterPath="$PROJECT_DIR$/listOfBooks.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/arianabarranttes@gmail.com.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/noahnimatullo@gmail.com.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/sherzod@gmail.com.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/sherzodnimatullo@gmail.com.bin" beforeDir="false" afterPath="$PROJECT_DIR$/users/sherzodnimatullo@gmail.com.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/testing@gmail.com.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Login/out/production/Library/Login/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/Login/out/production/Library/Login/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/admin.bin" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/shermanjones99@gmail.com.bin" beforeDir="false" afterPath="$PROJECT_DIR$/users/shermanjones99@gmail.com.bin" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,68 +53,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="17" selection-start-line="17" selection-end-line="17" />
-              <folding>
-                <element signature="e#752#753#0" expanded="true" />
-                <element signature="e#786#787#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/src/Library/UserWindow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="110" selection-start-line="110" selection-end-line="110" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#600#601#0" expanded="true" />
-                <element signature="e#702#703#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Library/src/Login/LogInScreen.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="198" column="50" selection-start-line="198" selection-start-column="50" selection-end-line="198" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Library/src/META-INF/MANIFEST.MF">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" selection-start-line="3" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/Book.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="60">
+              <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -117,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+            <state relative-caret-position="555">
+              <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -155,6 +103,7 @@
       <find>Button</find>
       <find>logoff</find>
       <find>column</find>
+      <find>thread</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -172,23 +121,24 @@
         <option value="$PROJECT_DIR$/Library/src/Login/jfxside.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/AdminClass.java" />
         <option value="$PROJECT_DIR$/Library/src/Login/AdminWindow.java" />
-        <option value="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" />
-        <option value="$PROJECT_DIR$/Library/src/Login/User.java" />
         <option value="$PROJECT_DIR$/Library/src/Login/login.fxml" />
         <option value="$PROJECT_DIR$/stylesheet.css" />
         <option value="$PROJECT_DIR$/Library/src/Login/grafix.fxml" />
         <option value="$PROJECT_DIR$/Library/src/Library/LogInPage.fxml" />
         <option value="$PROJECT_DIR$/Library/src/Login/LogInPage.fxml" />
+        <option value="$PROJECT_DIR$/Library/src/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/Library/src/Library/MyLibrary.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/Book.java" />
+        <option value="$PROJECT_DIR$/Library/src/Login/User.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/UserWindow.java" />
         <option value="$PROJECT_DIR$/Library/src/Library/AdminWindow.java" />
-        <option value="$PROJECT_DIR$/Library/src/META-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/Library/src/Login/LogInScreen.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="258" />
+    <option name="y" value="214" />
     <option name="width" value="1280" />
     <option name="height" value="777" />
   </component>
@@ -197,6 +147,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,13 +190,33 @@
             <path>
               <item name="Library-School-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Library-School-Project" type="462c0819:PsiDirectoryNode" />
-              <item name="users" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-School-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-School-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-School-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-School-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Library-School-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Library-School-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="Login" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="Library_School_Project_jar" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -383,7 +354,12 @@
       <workItem from="1555695094438" duration="1149000" />
       <workItem from="1555789945466" duration="12763000" />
       <workItem from="1555946423564" duration="1261000" />
-      <workItem from="1555962703753" duration="668000" />
+      <workItem from="1555962703753" duration="1521000" />
+      <workItem from="1555967004433" duration="940000" />
+      <workItem from="1555968191019" duration="262000" />
+      <workItem from="1555968584254" duration="995000" />
+      <workItem from="1555970084439" duration="197000" />
+      <workItem from="1556136256589" duration="96000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit&#10;-working log in and sign up screens&#10;-need to encrypt passwords">
       <created>1555363995171</created>
@@ -410,13 +386,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86841000" />
+    <option name="totallyTimeSpent" value="90184000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29321486" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27625203" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -425,7 +401,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32880434" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32846716" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32846716" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -435,7 +411,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.4627737" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50080776" side_tool="true" weight="0.329927" />
       <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49919224" weight="0.329927" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32746115" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3270073" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.24973376" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -496,12 +472,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java</url>
-          <line>126</line>
-          <properties />
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -587,27 +557,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/UserWindow.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
+        <state relative-caret-position="555">
+          <caret line="51" column="41" selection-start-line="51" selection-start-column="41" selection-end-line="51" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/Book.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="255">
+          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/AdminWindow.java">
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/UserWindow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="32" column="38" selection-start-line="32" selection-start-column="38" selection-end-line="32" selection-end-column="38" />
+        <state relative-caret-position="380">
+          <caret line="114" column="32" selection-start-line="114" selection-start-column="32" selection-end-line="114" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -621,33 +591,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Library/src/Library/MyLibrary.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-          <folding>
-            <element signature="e#752#753#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Login/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="110" selection-start-line="110" selection-end-line="110" />
+        <state relative-caret-position="380">
+          <caret line="62" column="38" selection-start-line="62" selection-start-column="38" selection-end-line="62" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Library/src/Login/LogInScreen.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="198" column="50" selection-start-line="198" selection-start-column="50" selection-end-line="198" selection-end-column="50" />
+        <state relative-caret-position="15">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Homework/Homework 07/src/sample/Question1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Library/src/Library/Book.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
         </state>
       </provider>
     </entry>
