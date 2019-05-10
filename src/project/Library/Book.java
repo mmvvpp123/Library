@@ -16,13 +16,6 @@ public class Book implements Serializable {
         this.category = category;
         this.isbn = isbn;
     }
-//    public Book(String title, String author, String category, String isbn, int quantity) {
-//        this.title = title;
-//        this.author = author;
-//        this.category = category;
-//        this.isbn = isbn;
-//        this.quantity = quantity;
-//    }
 
     public String getTitle() {
         return title;

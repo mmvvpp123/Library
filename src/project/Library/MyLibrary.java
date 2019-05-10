@@ -9,10 +9,6 @@ public class MyLibrary {
         this.listOfBooks = listOfBooks;
     }
 
-    MyLibrary() {
-        this.listOfBooks = new ArrayList<>();
-    }
-
     public void add(Book k) {
         Book temp = new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn());
         listOfBooks.add(temp);

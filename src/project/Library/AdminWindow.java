@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import project.LogIn.LogInScreen;
@@ -162,6 +164,7 @@ public class AdminWindow extends Application implements Serializable {
 
             result.ifPresent(name -> {
                 temp.setQuantity(Integer.parseInt(name));
+                save(library.getList());
                 table.refresh();
             });
         });
@@ -179,9 +182,11 @@ public class AdminWindow extends Application implements Serializable {
         table.setItems(books);
         table.getSelectionModel().selectFirst();
 
+        Region region = new Region();
         HBox hbox = new HBox(20, add, remove, save, logout);
-        VBox vbox = new VBox(20, table, title_Label, title_Field, author_Label, author_Field, category_Label, category_Field, isbn_Label, isbnAndSpinner, hbox);
+        VBox vbox = new VBox(20, table, title_Label, title_Field, author_Label, author_Field, category_Label, category_Field, isbn_Label, isbnAndSpinner, region, hbox);
         vbox.setPadding(new Insets(10));
+        VBox.setVgrow(region, Priority.ALWAYS);
 
         Scene scene = new Scene(vbox, 1000,600);
 

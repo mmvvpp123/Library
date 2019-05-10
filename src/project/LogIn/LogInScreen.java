@@ -18,6 +18,8 @@ import project.Library.AdminWindow;
 import project.Library.UserWindow;
 
 import java.io.File;
+import java.io.IOException;
+
 public class LogInScreen extends Application {
 
     public static Stage currentStage;
@@ -25,6 +27,7 @@ public class LogInScreen extends Application {
     public static PasswordField password_Field;
     public static final ToggleGroup privilege = new ToggleGroup();
     private ImageView userImg, passwordImg, logInButtonImg, signUpButtonImg;
+    public RadioButton guest;
 
     public LogInScreen() {
 
@@ -35,7 +38,7 @@ public class LogInScreen extends Application {
         launch(args);
     }
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) {
         currentStage = primaryStage;
         currentStage.setTitle("Sherzod's Local Library Log In");
 
@@ -65,7 +68,7 @@ public class LogInScreen extends Application {
 
 
 
-        RadioButton guest = new RadioButton("Guest");
+        guest = new RadioButton("Guest");
         guest.setToggleGroup(privilege);
         guest.setOnAction(e -> {
             password_Field.setDisable(true);
@@ -112,29 +115,25 @@ public class LogInScreen extends Application {
             if(!guest.isSelected()) {
                 File loadFile = new File("users/" + email_Field.getText() + ".bin");
                 User temp = User.load(loadFile);
-                if (!new String(User.decrypt(temp.getPassword().getBytes())).equals(password_Field.getText())) {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Wrong Password");
-                    alert.show();
-                    password_Field.setText("");
-                    temp = null;
-                }
-                else {
-                    try {
+                try {
+                    if (!new String(User.decrypt(temp.getPassword().getBytes())).equals(password_Field.getText())) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText("Wrong Password");
+                        alert.show();
+                        password_Field.setText("");
+                        temp = null;
+                    }
+                    else {
                         UserWindow userWindow = new UserWindow(temp);
                         userWindow.start(primaryStage);
-                    } catch (Exception e) {
-                        System.out.println("User Window failed to launch!");
                     }
+                } catch (Exception e) {
+                    System.out.println("Cannot find user");
                 }
             }
             if(admin.isSelected() && email_Field.getText().equals("sherzodnimatullo@gmail.com")) {
-                try {
-                    AdminWindow adminWindow = new AdminWindow();
-                    adminWindow.start(primaryStage);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+                AdminWindow adminWindow = new AdminWindow();
+                adminWindow.start(primaryStage);
             }
             else if (admin.isSelected() && !email_Field.getText().equals("sherzodnimatullo@gmail.com")) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
