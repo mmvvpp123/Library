@@ -7,31 +7,18 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class User implements Serializable {
-
     private String email;
     private String password;
     private String name;
     private String type;
-    private ArrayList<Book> borrowedBooks = new ArrayList<>();
+    private ArrayList<Book> borrowedBooks;
 
     User(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
         type = "User";
-    }
-
-    public void add(Book k) {
-        borrowedBooks.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
-    }
-
-    public void remove(Book k) {
-        for (Book x : borrowedBooks) {
-            if (x.getTitle().equals(k.getTitle())) {
-                borrowedBooks.remove(x);
-                return;
-            }
-        }
+        this.borrowedBooks = new ArrayList<>();
     }
 
     public static byte[] encrypt(byte[] password) {
@@ -89,26 +76,42 @@ public class User implements Serializable {
             file.close();
 
             return user;
-        } catch (Exception e) {
+        } catch (FileNotFoundException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter the correct email. If you don't have an account, click the Sign Up button");
             alert.show();
+        } catch (IOException e) {
+        } catch (ClassNotFoundException e) {
         }
         return null;
+    }
+
+    public void add(Book k) {
+        borrowedBooks.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+    }
+
+    public void remove(Book k) {
+        for (Book x : borrowedBooks) {
+            if (x.getTitle().equals(k.getTitle())) {
+                borrowedBooks.remove(x);
+                return;
+            }
+        }
     }
 
     public String getPassword() {
         return password;
     }
 
-    public String getName() { return name; }
+    public String getEmail() {
+        return email;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public ArrayList<Book> getList() {
-        if (!(borrowedBooks.size() > 1)) {
-            System.out.println("True");
-            return new ArrayList<Book>();
-        }
-        else
-            return borrowedBooks;
+        return borrowedBooks;
     }
 }

@@ -8,13 +8,19 @@ public class Book implements Serializable {
     private String author;
     private String category;
     private String isbn;
-    private int quantity = 1;
+    private int quantity;
 
     public Book(String title, String author, String category, String isbn) {
         this.title = title;
         this.author = author;
         this.category = category;
         this.isbn = isbn;
+        this.quantity = 1;
+    }
+
+    public Book(String title, String author, String category, String isbn, int quantity) {
+        this(title, author, category, isbn);
+        this.quantity = quantity;
     }
 
     public String getTitle() {
@@ -33,9 +39,19 @@ public class Book implements Serializable {
         return isbn;
     }
 
-    public void decQuantity(int decreaseAmount) { quantity -= decreaseAmount; }
-    public void incQuantity(int increaseAmount) { quantity += increaseAmount; }
-    public void setQuantity(int quantity) {this.quantity = quantity;}
+    public void decQuantity(int decreaseAmount) {
+        quantity -= decreaseAmount;
+    }
 
-    public int getQuantity() { return quantity; }
+    public void incQuantity(int increaseAmount) {
+        quantity += increaseAmount;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

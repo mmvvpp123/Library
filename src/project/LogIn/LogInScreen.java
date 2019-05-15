@@ -3,7 +3,6 @@ package project.LogIn;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -12,31 +11,124 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import project.Library.AdminWindow;
 import project.Library.UserWindow;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.Optional;
 
 public class LogInScreen extends Application {
 
+    public static final ToggleGroup privilege = new ToggleGroup();
     public static Stage currentStage;
     public static Scene scene;
     public static PasswordField password_Field;
-    public static final ToggleGroup privilege = new ToggleGroup();
     private ImageView userImg, passwordImg, logInButtonImg, signUpButtonImg;
-    public RadioButton guest;
 
     public LogInScreen() {
 
     }
 
-
     public static void main(String[] args) {
         launch(args);
     }
+
+    public static void signUp(String email) {
+        Label name_Label = new Label("Name");
+        TextField name_Field = new TextField();
+
+        Label email_Label = new Label("Email");
+        TextField email_Field = new TextField();
+        email_Field.setText(email);
+
+        Label password_Label = new Label("Password");
+        PasswordField password_SignUpField = new PasswordField();
+        Label passwordSecurity_Label = new Label("Password must have: 8 characters, a number, and a letter");
+        passwordSecurity_Label.setFont(new Font("Arial", 10));
+
+        Label passwordConfirm_Label = new Label("Confirm Password");
+        PasswordField passwordConfirm_Field = new PasswordField();
+
+        Button back = new Button("Back");
+        back.setCancelButton(true);
+        back.setOnAction(e -> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setContentText("Are you sure you want to go back?");
+            Optional<ButtonType> option = alert.showAndWait();
+            try {
+                if (option.get() == ButtonType.OK) {
+                    currentStage.close();
+                    LogInScreen logInScreen = new LogInScreen();
+                    logInScreen.start(logInScreen.currentStage);
+                }
+            } catch (Exception ex) {
+                System.out.println("Back failed!");
+            }
+        });
+        Button signUp = new Button("Sign Up");
+        signUp.setDefaultButton(true);
+        signUp.setOnAction((event) -> {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            if (!passwordConfirm_Field.getText().equals(password_SignUpField.getText())) {
+                alert.setContentText("Password fields don't match");
+                alert.show();
+            } else if (password_SignUpField.getText().length() < 8) {
+                alert.setContentText("Password too short");
+                alert.show();
+            } else if (passwordValidNumbers(password_SignUpField.getText())) {
+                alert.setContentText("Your password must include numbers");
+                alert.show();
+            } else if (passwordValidLetters(password_SignUpField.getText())) {
+                alert.setContentText("Your password must include letters");
+                alert.show();
+            } else if ((!email_Field.getText().contains(".")) || (!email_Field.getText().contains("@"))) {
+                alert.setContentText("Please enter a valid e-mail.");
+                alert.show();
+            } else {
+                alert.setAlertType(Alert.AlertType.INFORMATION);
+                alert.setContentText("Account created");
+                User user1 = new User(email_Field.getText(), new String(User.encrypt(password_SignUpField.getText().getBytes())), name_Field.getText());
+                User.save(user1);
+                currentStage.setScene(scene);
+                alert.show();
+            }
+            password_SignUpField.setText("");
+            passwordConfirm_Field.setText("");
+        });
+        HBox buttons = new HBox(10, signUp, back);
+        VBox box = new VBox(10, name_Label, name_Field, email_Label, email_Field, password_Label, password_SignUpField, passwordSecurity_Label, passwordConfirm_Label, passwordConfirm_Field, buttons);
+        box.setPadding(new Insets(20));
+        Scene newScene = new Scene(box, 640, 480);
+
+        currentStage.setScene(newScene);
+    }
+
+    public static boolean passwordValidNumbers(String password) {
+        char[] charList = password.toCharArray();
+        boolean check = true;
+
+        for (int i = 0; i < charList.length; i++) {
+            if ((charList[i] <= 57) && (charList[i] >= 48)) {
+                return false;
+            }
+        }
+        return check;
+    }
+
+    public static boolean passwordValidLetters(String password) {
+        char[] charList = password.toCharArray();
+        boolean check = true;
+        for (int i = 0; i < charList.length; i++) {
+            if ((charList[i] <= 90) && (charList[i] >= 65)) {
+                return false;
+            } else if ((charList[i] <= 122) && (charList[i] >= 97)) {
+                return false;
+            }
+        }
+        return check;
+    }
+
     @Override
     public void start(Stage primaryStage) {
         currentStage = primaryStage;
@@ -67,23 +159,25 @@ public class LogInScreen extends Application {
         passBox.setAlignment(Pos.CENTER);
 
 
-
-        guest = new RadioButton("Guest");
+        RadioButton guest = new RadioButton("Guest");
         guest.setToggleGroup(privilege);
         guest.setOnAction(e -> {
             password_Field.setDisable(true);
+            email_Field.setPromptText("Name");
         });
 
         RadioButton user = new RadioButton("User");
         user.setToggleGroup(privilege);
         user.setSelected(true);
         user.setOnAction(e -> {
+            email_Field.setPromptText("Email");
             password_Field.setDisable(false);
         });
 
         RadioButton admin = new RadioButton("Admin");
         admin.setToggleGroup(privilege);
         admin.setOnAction(e -> {
+            email_Field.setPromptText("Email");
             password_Field.setDisable(false);
         });
         VBox mainContainer = new VBox(50);
@@ -112,9 +206,9 @@ public class LogInScreen extends Application {
         logIn.setGraphic(logInButtonImg);
 
         logIn.setOnAction((event) -> {
-            if(!guest.isSelected()) {
-                File loadFile = new File("users/" + email_Field.getText() + ".bin");
-                User temp = User.load(loadFile);
+            File loadFile = new File("users/" + email_Field.getText() + ".bin");
+            User temp = User.load(loadFile);
+            if (!guest.isSelected()) {
                 try {
                     if (!new String(User.decrypt(temp.getPassword().getBytes())).equals(password_Field.getText())) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -122,23 +216,35 @@ public class LogInScreen extends Application {
                         alert.show();
                         password_Field.setText("");
                         temp = null;
-                    }
-                    else {
+                    } else {
                         UserWindow userWindow = new UserWindow(temp);
                         userWindow.start(primaryStage);
                     }
                 } catch (Exception e) {
                     System.out.println("Cannot find user");
                 }
+            } else if (guest.isSelected()) {
+                if (email_Field.getText().length() < 1) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a name");
+                    alert.show();
+                } else {
+                    UserWindow userWindow = new UserWindow(new User(" ", " ", email_Field.getText()), true);
+                    userWindow.start(primaryStage);
+                }
             }
-            if(admin.isSelected() && email_Field.getText().equals("sherzodnimatullo@gmail.com")) {
-                AdminWindow adminWindow = new AdminWindow();
-                adminWindow.start(primaryStage);
-            }
-            else if (admin.isSelected() && !email_Field.getText().equals("sherzodnimatullo@gmail.com")) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("You do not have administrative privileges");
-                alert.show();
+            try {
+                if (admin.isSelected() && temp.getEmail().equals("admin") &&
+                        new String(User.decrypt(temp.getPassword().getBytes())).equals(password_Field.getText())) {
+                    AdminWindow adminWindow = new AdminWindow();
+                    adminWindow.start(primaryStage);
+                } else if (admin.isSelected() && !email_Field.getText().equals("admin")) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("You do not have administrative privileges");
+                    alert.show();
+                }
+            } catch (NullPointerException e) {
+                System.out.println("Wrong password.");
             }
         });
 
@@ -149,105 +255,14 @@ public class LogInScreen extends Application {
         signUp.setGraphic(signUpButtonImg);
 
 
-
         HBox buttons = new HBox(20, logIn, signUp);
         buttons.setAlignment(Pos.CENTER);
         secondContainer.getChildren().add(buttons);
         signUp.setOnAction(e -> password_Field.setText(""));
         signUp.setOnAction(e -> signUp(email_Field.getText()));
 
-        scene = new Scene(mainContainer,640, 480);
+        scene = new Scene(mainContainer, 640, 480);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        primaryStage.setX((primScreenBounds.getWidth() - primaryStage.getWidth()) / 2);
-        primaryStage.setY((primScreenBounds.getHeight() - primaryStage.getHeight()) / 4);
-    }
-
-    public static void signUp(String email) {
-        Label name_Label = new Label("Name");
-        TextField name_Field = new TextField();
-
-        Label email_Label = new Label("Email");
-        TextField email_Field = new TextField();
-        email_Field.setText(email);
-
-        Label password_Label = new Label("Password");
-        PasswordField password_SignUpField = new PasswordField();
-        Label passwordSecurity_Label = new Label("Password must have: 8 characters, a number, and a letter");
-        passwordSecurity_Label.setFont(new Font("Arial", 10));
-
-        Label passwordConfirm_Label = new Label("Confirm Password");
-        PasswordField passwordConfirm_Field = new PasswordField();
-
-        Button signUp = new Button("Sign Up");
-        signUp.setDefaultButton(true);
-        signUp.setOnAction((event) -> {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            if(!passwordConfirm_Field.getText().equals(password_SignUpField.getText())) {
-                alert.setContentText("Password fields don't match");
-                alert.show();
-                password_SignUpField.setText("");
-                passwordConfirm_Field.setText("");
-            }
-            else if(password_SignUpField.getText().length() < 8) {
-                alert.setContentText("Password too short");
-                alert.show();
-                password_SignUpField.setText("");
-                passwordConfirm_Field.setText("");
-            }
-            else if (passwordValidNumbers(password_SignUpField.getText())) {
-                alert.setContentText("Your password must include numbers");
-                alert.show();
-                password_SignUpField.setText("");
-                passwordConfirm_Field.setText("");
-            }
-            else if (passwordValidLetters(password_SignUpField.getText())) {
-                alert.setContentText("Your password must include letters");
-                alert.show();
-                passwordConfirm_Field.setText("");
-                password_SignUpField.setText("");
-            }
-            else {
-                alert.setAlertType(Alert.AlertType.INFORMATION);
-                alert.setContentText("Account created");
-                User user1 = new User(email_Field.getText(), new String(User.encrypt(password_SignUpField.getText().getBytes())), name_Field.getText());
-                User.save(user1);
-                password_Field.setText("");
-                currentStage.setScene(scene);
-                alert.show();
-            }
-        });
-        VBox box = new VBox(10, name_Label, name_Field, email_Label, email_Field, password_Label, password_SignUpField, passwordSecurity_Label ,passwordConfirm_Label, passwordConfirm_Field, signUp);
-        box.setPadding(new Insets(20));
-        Scene newScene = new Scene(box, 300, 500);
-
-        currentStage.setScene(newScene);
-    }
-
-    public static boolean passwordValidNumbers(String password) {
-        char [] charList = password.toCharArray();
-        boolean check = true;
-
-        for(int i = 0; i < charList.length; i++) {
-            if((charList[i] <= 57) && (charList[i] >= 48)) {
-                return false;
-            }
-        }
-        return check;
-    }
-
-    public static boolean passwordValidLetters(String password) {
-        char [] charList = password.toCharArray();
-        boolean check = true;
-        for (int i = 0; i < charList.length; i++) {
-            if ((charList[i] <= 90) && (charList[i] >= 65)) {
-                return false;
-            } else if ((charList[i] <= 122) && (charList[i] >= 97)) {
-                return false;
-            }
-        }
-        return check;
     }
 }

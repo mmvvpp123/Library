@@ -14,6 +14,7 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import project.LogIn.LogInScreen;
+import project.LogIn.User;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -26,9 +27,28 @@ public class AdminWindow extends Application implements Serializable {
     private TableView table = generateColumns();
     private ObservableList<Book> books = FXCollections.observableArrayList();
     private MyLibrary library = new MyLibrary(load());
-    private ImageView addImg, removeImg, saveImg, logoutImg;
+    private ImageView addImg, removeImg, saveImg, logoutImg, usersImg;
 
-    public AdminWindow(){
+    public AdminWindow() {
+    }
+
+    public static void save(ArrayList<Book> library) {
+        try {
+            File userFile = new File("listOfBooks.bin");
+
+            //Saving of object in a file
+            FileOutputStream file = new FileOutputStream(userFile);
+            ObjectOutputStream out = new ObjectOutputStream(file);
+
+            // Method for serialization of object
+
+            out.writeObject(library);
+
+            out.close();
+            file.close();
+        } catch (Exception e) {
+            System.out.println("Directory missing");
+        }
     }
 
     @Override
@@ -57,28 +77,68 @@ public class AdminWindow extends Application implements Serializable {
 
         HBox isbnAndSpinner = new HBox(20, isbn_Field, quantitySpinner);
 
+        Button users = new Button("View Users");
+        usersImg = new ImageView(new File("vectors/users.png").toURI().toString());
+        usersImg.setPreserveRatio(true);
+        usersImg.setFitWidth(20);
+        users.setGraphic(usersImg);
+        users.setOnAction(e -> {
+            ObservableList<String> userList = FXCollections.observableArrayList();
+            File folder = new File("users/");
+            File[] listOfFiles = folder.listFiles();
+            for (int i = 0; i < listOfFiles.length; i++) {
+                if (User.load(listOfFiles[i]) instanceof User) {
+                    userList.add(User.load(listOfFiles[i]).getEmail());
+                }
+            }
+            ListView<String> listViewUser = new ListView<>(userList);
+
+            Button viewBooks = new Button("View Books");
+            ObservableList<String> books = FXCollections.observableArrayList();
+            viewBooks.setOnAction(event -> {
+                books.clear();
+                String email = "users/" + listViewUser.getSelectionModel().getSelectedItem() + ".bin";
+                User temp = User.load(new File(email));
+                for (int i = 0; i < temp.getList().size(); i++) {
+                    books.add(temp.getList().get(i).getTitle());
+                }
+            });
+            ListView<String> listViewBooks = new ListView<>(books);
+            HBox lists = new HBox(listViewUser, listViewBooks);
+            VBox container = new VBox(lists, viewBooks);
+            Stage stage = new Stage();
+            stage.setTitle("Manage Users");
+            stage.setScene(new Scene(container, 500, 500));
+            stage.show();
+        });
+
+
         Button logout = new Button("Log Out");
         logout.setCancelButton(true);
         logoutImg = new ImageView(new File("vectors/logout.png").toURI().toString());
-        logoutImg.setPreserveRatio(true);logoutImg.setFitWidth(20);
+        logoutImg.setPreserveRatio(true);
+        logoutImg.setFitWidth(20);
         logout.setGraphic(logoutImg);
 
 
         Button add = new Button("Add Book");
         add.setDefaultButton(true);
         addImg = new ImageView(new File("vectors/add.png").toURI().toString());
-        addImg.setPreserveRatio(true);addImg.setFitWidth(20);
+        addImg.setPreserveRatio(true);
+        addImg.setFitWidth(20);
         add.setGraphic(addImg);
 
 
         Button save = new Button("Save");
         saveImg = new ImageView(new File("vectors/save.png").toURI().toString());
-        saveImg.setPreserveRatio(true);saveImg.setFitWidth(20);
+        saveImg.setPreserveRatio(true);
+        saveImg.setFitWidth(20);
         save.setGraphic(saveImg);
 
         Button remove = new Button("Remove Book");
         removeImg = new ImageView(new File("vectors/remove.png").toURI().toString());
-        removeImg.setPreserveRatio(true);removeImg.setFitWidth(20);
+        removeImg.setPreserveRatio(true);
+        removeImg.setFitWidth(20);
         remove.setGraphic(removeImg);
 
         save.setOnAction(e -> save(library.getList()));
@@ -100,13 +160,12 @@ public class AdminWindow extends Application implements Serializable {
 
 
         remove.setOnAction(e -> {
-            Book k = (Book)table.getSelectionModel().getSelectedItem();
+            Book k = (Book) table.getSelectionModel().getSelectedItem();
 
             if (k.getQuantity() == 1 || k.getQuantity() < quantitySpinner.getValue()) {
                 books.remove(k);
                 library.remove(k);
-            }
-            else
+            } else
                 for (int i = 0; i < books.size(); i++) {
                     if (books.get(i).getTitle().equals(k.getTitle())) {
                         books.get(i).decQuantity(quantitySpinner.getValue());
@@ -118,13 +177,12 @@ public class AdminWindow extends Application implements Serializable {
         });
 
         add.setOnAction(e -> {
-            Book temp = new Book(title_Field.getText(), author_Field.getText(), category_Field.getText(), isbn_Field.getText());
-
-            if(books.size() > 0) {
+            Book temp = new Book(title_Field.getText(), author_Field.getText(), category_Field.getText(), isbn_Field.getText(), quantitySpinner.getValue());
+            if (books.size() > 0) {
                 for (int i = 0; i < books.size(); i++) {
                     if (library.getList().get(i).getTitle().equals(temp.getTitle())) {
-                        library.getList().get(i).incQuantity(quantitySpinner.getValue());
-                        books.get(i).incQuantity(quantitySpinner.getValue());
+                        library.getList().get(i).incQuantity(temp.getQuantity());
+                        books.get(i).incQuantity(temp.getQuantity());
                         table.refresh();
 
 
@@ -132,11 +190,11 @@ public class AdminWindow extends Application implements Serializable {
                         author_Field.setText("");
                         category_Field.setText("");
                         isbn_Field.setText("");
+                        quantitySpinner.getValueFactory().setValue(1);
                         return;
                     }
                 }
             }
-            temp.setQuantity(quantitySpinner.getValue());
             books.add(temp);
             library.add(temp);
             table.refresh();
@@ -154,7 +212,7 @@ public class AdminWindow extends Application implements Serializable {
 
         MenuItem item1 = new MenuItem("Edit");
         item1.setOnAction(e -> {
-            Book temp = ((Book)table.getSelectionModel().getSelectedItem());
+            Book temp = ((Book) table.getSelectionModel().getSelectedItem());
             TextInputDialog dialog = new TextInputDialog(Integer.toString(temp.getQuantity()));
             dialog.setTitle("Quantity Change");
             dialog.setHeaderText("Quantity");
@@ -170,7 +228,7 @@ public class AdminWindow extends Application implements Serializable {
         });
         MenuItem item2 = new MenuItem("Remove");
         item2.setOnAction(event -> {
-            Book temp = (Book)table.getSelectionModel().getSelectedItem();
+            Book temp = (Book) table.getSelectionModel().getSelectedItem();
             books.remove(temp);
             library.remove(temp);
         });
@@ -183,12 +241,12 @@ public class AdminWindow extends Application implements Serializable {
         table.getSelectionModel().selectFirst();
 
         Region region = new Region();
-        HBox hbox = new HBox(20, add, remove, save, logout);
+        HBox hbox = new HBox(20, add, remove, save, users, logout);
         VBox vbox = new VBox(20, table, title_Label, title_Field, author_Label, author_Field, category_Label, category_Field, isbn_Label, isbnAndSpinner, region, hbox);
         vbox.setPadding(new Insets(10));
         VBox.setVgrow(region, Priority.ALWAYS);
 
-        Scene scene = new Scene(vbox, 1000,600);
+        Scene scene = new Scene(vbox, 1000, 600);
 
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -200,20 +258,20 @@ public class AdminWindow extends Application implements Serializable {
         titleColumn.setMinWidth(320);
 
 
-        TableColumn <Book, String> authorColumn = new TableColumn("Author");
+        TableColumn<Book, String> authorColumn = new TableColumn("Author");
         authorColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
         authorColumn.setMinWidth(200);
 
 
-        TableColumn <Book, String> categoryColumn = new TableColumn("Category");
+        TableColumn<Book, String> categoryColumn = new TableColumn("Category");
         categoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
         categoryColumn.setMinWidth(150);
 
-        TableColumn <Book, String> isbnColumn = new TableColumn("ISBN");
+        TableColumn<Book, String> isbnColumn = new TableColumn("ISBN");
         isbnColumn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         isbnColumn.setMinWidth(200);
 
-        TableColumn <Book, Integer> quantityColumn = new TableColumn("#");
+        TableColumn<Book, Integer> quantityColumn = new TableColumn("#");
         quantityColumn.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         quantityColumn.setMinWidth(50);
 
@@ -224,27 +282,8 @@ public class AdminWindow extends Application implements Serializable {
 
     }
 
-    public static void save(ArrayList<Book> library) {
-        try {
-            File userFile = new File("listOfBooks.bin");
-
-            //Saving of object in a file
-            FileOutputStream file = new FileOutputStream(userFile);
-            ObjectOutputStream out = new ObjectOutputStream(file);
-
-            // Method for serialization of object
-
-            out.writeObject(library);
-
-            out.close();
-            file.close();
-        } catch (Exception e) {
-            System.out.println("Directory missing");
-        }
-    }
-
     public ArrayList<Book> load() {
-            // Reading the object from a file
+        // Reading the object from a file
         ArrayList<Book> listOfBooks = null;
         try {
             FileInputStream file = new FileInputStream(new File("listOfBooks.bin"));

@@ -7,12 +7,16 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import project.LogIn.LogInScreen;
 import project.LogIn.User;
 
-import java.io.*;
+import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class UserWindow extends Application implements Serializable {
@@ -20,6 +24,7 @@ public class UserWindow extends Application implements Serializable {
     private Stage currentStage;
 
     private User user;
+    private boolean guest;
 
     private AdminWindow admin = new AdminWindow();
     private MyLibrary library = new MyLibrary(admin.load());
@@ -30,16 +35,21 @@ public class UserWindow extends Application implements Serializable {
     private TableView myBooksTable = admin.generateColumns();
     private ObservableList<Book> borrowedBooks;
 
-    private ImageView logOffImg, borrowImg, returnImg;
+    private ImageView logOffImg, borrowImg, returnImg, searchImg;
 
-    public UserWindow(User user)  {
+    public UserWindow(User user) {
         this.user = user;
+    }
+
+    public UserWindow(User user, boolean guest) {
+        this(user);
+        this.guest = guest;
     }
 
     @Override
     public void start(Stage primaryStage) {
         currentStage = primaryStage;
-        currentStage.setTitle(user.getName()+"'s Window");
+        currentStage.setTitle(user.getName() + "'s Window");
         borrowedBooks = loadData();
         TabPane tabPane = new TabPane();
 
@@ -53,8 +63,7 @@ public class UserWindow extends Application implements Serializable {
         borrow.setGraphic(borrowImg);
 
         borrow.setOnAction(e -> {
-            Book selectedBook = (Book)availableBooksTable.getSelectionModel().getSelectedItem();
-            moveBook(availableBooksList, borrowedBooks, user, library, selectedBook);
+            borrow((Book) availableBooksTable.getSelectionModel().getSelectedItem());
             save(user, library.getList());
         });
 
@@ -65,23 +74,25 @@ public class UserWindow extends Application implements Serializable {
         returnBook.setGraphic(returnImg);
 
         returnBook.setOnAction(event -> {
-            Book selectedBook = (Book)myBooksTable.getSelectionModel().getSelectedItem();
-            moveBook(borrowedBooks, availableBooksList, library, user, selectedBook);
+            returnBook((Book) myBooksTable.getSelectionModel().getSelectedItem());
             save(user, library.getList());
         });
 
+        searchImg = new ImageView(new File("vectors/search.png").toURI().toString());
+        searchImg.setPreserveRatio(true);
+        searchImg.setFitWidth(15);
         Button search = new Button("Search");
+        search.setGraphic(searchImg);
         search.setDefaultButton(true);
         TextField searchBox = new TextField();
         search.setOnAction(e -> {
             TableView table;
             ObservableList<Book> list;
             String selectedTab = tabPane.getSelectionModel().getSelectedItem().getText();
-            if(selectedTab.equals("My Books")) {
+            if (selectedTab.equals("My Books")) {
                 table = myBooksTable;
                 list = borrowedBooks;
-            }
-            else {
+            } else {
                 table = availableBooksTable;
                 list = availableBooksList;
             }
@@ -137,11 +148,19 @@ public class UserWindow extends Application implements Serializable {
         VBox vbox = new VBox(20, logOffandName, tabPane);
 
         Scene scene = new Scene(vbox, 1000, 500);
+
+        if (guest == true) {
+            myBooks.setDisable(true);
+            borrow.setDisable(true);
+            Label label = new Label("You are currently in guest mode. To have full access, please create an account.");
+            availableBox.getChildren().add(label);
+        }
+
         currentStage.setScene(scene);
         currentStage.show();
     }
 
-    void restart () {
+    void restart() {
         try {
             currentStage.close();
             LogInScreen login = new LogInScreen();
@@ -161,70 +180,78 @@ public class UserWindow extends Application implements Serializable {
         AdminWindow.save(k);
     }
 
-    private void moveBook(ObservableList<Book> fromList, ObservableList<Book> toList, Object to, Object from, Book selectedBook) {
-        int indexOf = indexOfBook(toList, selectedBook);
-
+    private void borrow(Book k) {
+        int toBook = indexOfBook(borrowedBooks, k);
+        int fromBook = indexOfBook(availableBooksList, k);
         try {
-            if (selectedBook.getQuantity() == 1) {
-                fromList.remove(selectedBook);
-                if (from instanceof User)
-                    ((User)from).remove(selectedBook);
-                else
-                    ((MyLibrary)from).remove(selectedBook);
+            if (k.getQuantity() == 1) {
+                availableBooksList.remove(k);
+                library.remove(k);
 
-                if(indexOf > -1) {
-                    toList.get(indexOf).incQuantity(1);
-                    refresh();
+                if (toBook > -1) {
+                    borrowedBooks.get(toBook).incQuantity(1);
+                    user.getList().get(toBook).incQuantity(1);
+                } else {
+                    borrowedBooks.add(k);
+                    user.add(k);
                 }
-                else {
-                    toList.add(selectedBook);
-                    if(to instanceof User)
-                        ((User)to).add(selectedBook);
-                    else
-                        ((MyLibrary)to).add(selectedBook);
+                refresh();
+            } else {
+                if (toBook < 0) {
+                    borrowedBooks.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+                    user.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+                } else {
+                    borrowedBooks.get(toBook).incQuantity(1);
+                    user.getList().get(toBook).incQuantity(1);
                 }
+                availableBooksList.get(fromBook).decQuantity(1);
+                library.getList().get(fromBook).decQuantity(1);
+                refresh();
             }
-            else {
-                for (int i = 0; i < fromList.size(); i++) {
-                    if (fromList.get(i).getTitle().equals(selectedBook.getTitle())) {
-                        fromList.get(i).decQuantity(1);
-                        if (from instanceof User)
-                            ((User)from).getList().get(i).decQuantity(1);
-                        else
-                            ((MyLibrary)from).getList().get(i).decQuantity(1);
-                        refresh();
-
-                        for (int j = 0; j < toList.size(); j++) {
-                            if (toList.get(j).getTitle().equals(selectedBook.getTitle())) {
-                                toList.get(j).incQuantity(1);
-                                if (to instanceof User)
-                                    ((User)to).getList().get(j).incQuantity(1);
-                                else
-                                    ((MyLibrary)to).getList().get(j).incQuantity(1);
-
-                                refresh();
-                                return;
-                            }
-                        }
-                        toList.add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
-                                            selectedBook.getCategory(), selectedBook.getIsbn()));
-                        if (to instanceof User)
-                            ((User)to).add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
-                                selectedBook.getCategory(), selectedBook.getIsbn()));
-                        else
-                            ((MyLibrary)to).add(new Book(selectedBook.getTitle(), selectedBook.getAuthor(),
-                                    selectedBook.getCategory(), selectedBook.getIsbn()));
-                        return;
-                    }
-                }
-            }
-        } catch (NullPointerException e) {
-            System.out.println("Please select a book");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
+    private void returnBook(Book k) {
+        int toBook = indexOfBook(availableBooksList, k);
+        int fromBook = indexOfBook(borrowedBooks, k);
+        try {
+            if (k.getQuantity() == 1) {
+                borrowedBooks.remove(k);
+                user.remove(k);
+
+                if (toBook > -1) {
+                    availableBooksList.get(toBook).incQuantity(1);
+                    library.getList().get(toBook).incQuantity(1);
+                } else {
+                    availableBooksList.add(k);
+                    library.add(k);
+                }
+                refresh();
+            } else {
+                if (toBook < 0) {
+                    availableBooksList.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+                    library.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn()));
+                } else {
+                    availableBooksList.get(toBook).incQuantity(1);
+                    library.getList().get(toBook).incQuantity(1);
+                }
+                borrowedBooks.get(fromBook).decQuantity(1);
+                int initialQuantity = borrowedBooks.get(fromBook).getQuantity();
+                if (user.getList().get(fromBook).getQuantity() > initialQuantity) {
+                    user.getList().get(fromBook).decQuantity(1);
+                }
+                refresh();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
     private int indexOfBook(ObservableList<Book> books, Book k) {
-        for(int i = 0; i < books.size(); i++) {
+        for (int i = 0; i < books.size(); i++) {
             if (books.get(i).getTitle().equals(k.getTitle()))
                 return i;
         }
@@ -232,12 +259,11 @@ public class UserWindow extends Application implements Serializable {
     }
 
     private ObservableList<Book> loadData() {
-        if(user.getList() != null) {
+        if (user.getList() != null) {
             ObservableList<Book> temp = FXCollections.observableArrayList(user.getList());
             myBooksTable.setItems(temp);
             return temp;
-        }
-        else
+        } else
             return FXCollections.observableArrayList();
     }
 }

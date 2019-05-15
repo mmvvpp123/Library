@@ -2,7 +2,7 @@ package project.Library;
 
 import java.util.ArrayList;
 
-public class MyLibrary {
+class MyLibrary {
     private ArrayList<Book> listOfBooks;
 
     MyLibrary(ArrayList<Book> listOfBooks) {
@@ -10,12 +10,11 @@ public class MyLibrary {
     }
 
     public void add(Book k) {
-        Book temp = new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn());
-        listOfBooks.add(temp);
-        }
+        listOfBooks.add(new Book(k.getTitle(), k.getAuthor(), k.getCategory(), k.getIsbn(), k.getQuantity()));
+    }
 
     public void remove(Book k) {
-        for (Book inList:listOfBooks) {
+        for (Book inList : listOfBooks) {
             if (k.getTitle().equals(inList.getTitle())) {
                 listOfBooks.remove(inList);
                 AdminWindow.save(listOfBooks);
